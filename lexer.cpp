@@ -2,8 +2,6 @@
 #include<cctype>
 #include<iostream>
 
-Lexer::Token_stream ts;
-
 Lexer::Token Lexer::Token_stream::get() {
 	char ch = 0;
 	*ip >> ch;
@@ -41,5 +39,7 @@ Lexer::Token Lexer::Token_stream::get() {
 }
 
 Lexer::Token& Lexer::Token_stream::current() {
-
+	return ct;
 }
+
+Lexer::Token_stream ts{ cin };

@@ -2,7 +2,7 @@
 #include<string>
 #include<map>
 
-#include<sstream>
+
 using namespace std;
 
 
@@ -25,6 +25,7 @@ namespace Lexer{
 
 	class Token_stream {
 	public:
+		//Token_stream();
 		Token_stream(istream& s) : ip{ &s }, owns(false), ct{ Kind::end }{}
 		Token_stream(istream* p) : ip{ p }, owns(true), ct{ Kind::end }{}
 		~Token_stream() { close(); }
@@ -41,8 +42,9 @@ namespace Lexer{
 		Token ct{ Kind::end };			
 	};
 
-	extern Token_stream ts;
+
 }
+extern Lexer::Token_stream ts;
 
 namespace Table {
 	extern map<string, double> table;

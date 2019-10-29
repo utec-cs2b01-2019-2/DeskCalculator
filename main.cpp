@@ -6,12 +6,12 @@
 
 void Driver::calculate() {
 	for (;;) {
-		Lexer::ts.get();
-		if (Lexer::ts.current().kind == Lexer::Kind::end)break;
-		if (Lexer::ts.current().kind == Lexer::Kind::print)continue;
+		ts.get();
+		if (ts.current().kind == Lexer::Kind::end)break;
+		if (ts.current().kind == Lexer::Kind::print)continue;
 		cout << Parser::expr(false) << '\n';
 	}
-}
+};
 
 int main(int argc, char* argv[]) {
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 	case 1:
 		break;
 	case 2:
-		Lexer::ts.set_input(new istringstream{ argv[1] });
+		ts.set_input(new istringstream{ argv[1] });
 		break;
 	default:
 		Error::error("too many arguments");
