@@ -6,12 +6,15 @@
 
 Lexer::Token Lexer::Token_stream::get() {
 	char ch = 0;
-	*ip >> ch;
-
+	//*ip >> ch;
+	do {
+		if (!ip->get(ch))
+			return ct = { Kind::end };
+	} while (ch != '\n' && isspace(ch));
 	switch (ch) {
-	case 0:
-		return ct = { Kind::end };
 	case ';':
+	case '\n':
+		return ct = { Kind::print };
 	case '*':
 	case '/':
 	case '+':
