@@ -3,6 +3,7 @@
 
 #include"DeskCalc.h"
 
+Lexer::Token_stream ts{ &cin };
 
 void Driver::calculate() {
 	for (;;) {
@@ -14,9 +15,10 @@ void Driver::calculate() {
 };
 
 int main(int argc, char* argv[]) {
-
+	istream* input;
 	switch (argc) {
 	case 1:
+		input = &cin;
 		break;
 	case 2:
 		ts.set_input(new istringstream{ argv[1] });
